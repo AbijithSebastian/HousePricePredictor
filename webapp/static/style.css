@@ -2,14 +2,14 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0e4f7a, #2196f3, #80d8ff); /* Teal/Light Blue gradient */
+    background: linear-gradient(135deg, #0e4f7a, #2196f3, #80d8ff);
     color: #ffffff;
     position: relative;
     overflow-x: hidden;
     height: 100vh;
 }
 
-/* Layer 1: Light pattern overlay */
+/* Light pattern overlay */
 body::before {
     content: '';
     position: fixed;
@@ -23,7 +23,7 @@ body::before {
     filter: blur(2px);
 }
 
-/* Layer 2: Residential/House silhouette overlay */
+/* Residential silhouette overlay */
 body::after {
     content: '';
     position: fixed;
@@ -31,15 +31,13 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') 
-        center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
     opacity: 0.15;
     z-index: -2;
     filter: brightness(70%) contrast(120%) saturate(80%);
 }
 
-/* Header with icon */
+/* Header */
 .header-title {
     display: flex;
     align-items: center;
@@ -55,11 +53,6 @@ body::after {
     color: #ffffff;
 }
 
-.header-icon {
-    width: 45px;
-    height: auto;
-}
-
 header p {
     text-align: center;
     margin-top: 12px;
@@ -67,7 +60,7 @@ header p {
     font-size: 1.1rem;
 }
 
-/* Container Card - Glassmorphism */
+/* Container */
 .container {
     width: 420px;
     background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
@@ -94,37 +87,26 @@ label {
     color: #ffffff;
 }
 
-/* Inputs, Select, Button */
+/* Inputs & Select */
 .container input,
-.container select,
-.container button {
+.container select {
     width: 100%;
-    box-sizing: border-box;
+    padding: 14px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.25);
+    font-size: 1rem;
+    background-color: rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
 }
 
 .container input {
-    padding: 14px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.25);
-    font-size: 1rem;
-    background-color: rgba(255,255,255,0.1);
     color: #ffffff;
-    transition: all 0.3s ease;
 }
 
-/* Make dropdown text black */
 .container select {
-    padding: 14px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.25);
-    font-size: 1rem;
-    background-color: rgba(255,255,255,0.1);
-    color: #000000; 
-    transition: all 0.3s ease;
+    color: #000000; /* dropdown text black */
 }
 
 input:focus, select:focus {
@@ -133,13 +115,19 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* Button Styling */
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 button {
+    flex: 1;
     padding: 16px;
     border: none;
     border-radius: 12px;
-    background: linear-gradient(90deg, #4dd0e1, #00acc1);
-    color: white; 
     font-size: 1.15rem;
     font-weight: bold;
     cursor: pointer;
@@ -147,11 +135,29 @@ button {
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
-button:hover {
+.predict-btn {
+    background: linear-gradient(90deg, #4dd0e1, #00acc1);
+    color: white;
+}
+
+.predict-btn:hover {
+    background: linear-gradient(90deg, #26c6da, #00838f);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    background: linear-gradient(90deg, #26c6da, #00838f);
 }
+
+/* Reset Button */
+.reset-btn {
+    background: linear-gradient(90deg, #ff7043, #ff5722); /* orangish-red gradient */
+    color: white;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(90deg, #ff8a65, #ff7043); /* lighter orangish-red on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
 
 /* Result Box */
 .result {
@@ -176,9 +182,5 @@ button:hover {
 
     .header-title h3 {
         font-size: 1.8rem;
-    }
-
-    .header-icon {
-        width: 35px;
     }
 }

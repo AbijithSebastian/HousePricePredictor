@@ -12,23 +12,29 @@
 
         <form action="/predict" method="POST">
             <label for="area">Area (sq ft):</label>
-            <input type="number" id="area" name="area" placeholder="e.g., 1200" required>
+            <input type="number" id="area" name="area" placeholder="e.g., 1200" 
+                   value="{{ form_data.area if form_data else '' }}" required>
 
             <label for="bedrooms">Bedrooms:</label>
-            <input type="number" id="bedrooms" name="bedrooms" placeholder="e.g., 3" required>
+            <input type="number" id="bedrooms" name="bedrooms" placeholder="e.g., 3" 
+                   value="{{ form_data.bedrooms if form_data else '' }}" required>
 
             <label for="age">Age of Property (years):</label>
-            <input type="number" id="age" name="age" placeholder="e.g., 10" required>
+            <input type="number" id="age" name="age" placeholder="e.g., 10" 
+                   value="{{ form_data.age if form_data else '' }}" required>
 
             <label for="location">Location:</label>
             <select id="location" name="location" required>
                 <option value="">--Select Location--</option>
-                <option value="City Center">City Center</option>
-                <option value="Suburb">Suburb</option>
-                <option value="Village">Village</option>
+                <option value="City Center" {% if form_data and form_data.location=='City Center' %}selected{% endif %}>City Center</option>
+                <option value="Suburb" {% if form_data and form_data.location=='Suburb' %}selected{% endif %}>Suburb</option>
+                <option value="Village" {% if form_data and form_data.location=='Village' %}selected{% endif %}>Village</option>
             </select>
 
-            <button type="submit">Predict Price</button>
+            <div class="button-group">
+                <button type="submit" class="predict-btn">Predict Price</button>
+                <button type="button" class="reset-btn" onclick="window.location='/'">Reset</button>
+            </div>
         </form>
 
         {% if result %}

@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', form_data=None, result=None)
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -31,8 +31,12 @@ def predict():
     poly_processed = poly.transform(processed)
     prediction = model.predict(poly_processed)[0]
 
+    # Pass the form data back to template to retain values
+    form_data = request.form
+
     return render_template('index.html',
-                           result=f"Estimated Price: ₹{round(prediction,2)}")
+                           result=f"Estimated Price: ₹{round(prediction,2)}",
+                           form_data=form_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
