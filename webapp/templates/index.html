@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <center><h2>House Price Predictor 🏠</h2></center>
+
+        <form action="/predict" method="POST">
+            <label for="area">Area (sq ft):</label>
+            <input type="number" id="area" name="area" placeholder="e.g., 1200" required>
+
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="number" id="bedrooms" name="bedrooms" placeholder="e.g., 3" required>
+
+            <label for="age">Age of Property (years):</label>
+            <input type="number" id="age" name="age" placeholder="e.g., 10" required>
+
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="">--Select Location--</option>
+                <option value="City Center">City Center</option>
+                <option value="Suburb">Suburb</option>
+                <option value="Village">Village</option>
+            </select>
+
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if result %}
+            <div class="result">{{ result }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
